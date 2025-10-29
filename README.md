@@ -1,15 +1,8 @@
 
 
 ﻿(en construction)
-Bonjour,
- 
-Mon nom est Bernard Ribordy, ancien ingénieur(ETS Fribourg 67)  télécommunication, électronique, micro et mini ordinateurs, hardware, software (assembleur, fortran, pascal, COBOL). A la retraite depuis de nombreuses années, après avoir contribué au déploiement des téléreseaux CATV genevois. 
-J'habite dans le canton de Genève et débute avec Github.
-A part les nombreuses activités de retraité (golf, lecture, Cinéma, conférence à l'uni des seniors, (siestes :), etc) je me suis intéressé aux réseaux de neurones artificiels. 
 
-J'ai commencé à développer un programme en Visual basic, que j'ai abandonné au profit du C++, plus rapide.
-
-Ainsi, j'ai réalisé un programme qui, à l'aide de couches de neurones artificiels (perceptron multicouches),
+Ce projet qui, à l'aide de couches de neurones artificiels (perceptron multicouches),
 permet par exemple de résoudre la fonction XOR en fonction de x et y. - ou de simuler un décodeur binaire/décimal (0..9).
 (Le contraire également, ou à partir d'une entrée entre 0 et 9, on obtient le chiffre binaire correspondant (4 bits). Le taux de réussite atteint 100%.
 
@@ -27,63 +20,65 @@ Le programme permet aussi, à partir d’un ancien apprentissage qui auront fait
 
 <strong>Procédure :</strong>
 
-1.  créer deux répertoire "IAdePapi_1" et "IAdePapi_installation" et copier les fichier .cpp et .h depuis les repository.
-Charger l’outil de développement Qt (https://www.qt.io/product/development-tools) si vous ne l’avez pas (il existe en version open source),
+1.  créer deux dossiers **IAdePapi_1** et **IAdePapi_installation** et copier les fichier xxx.cpp et xx.h depuis les repository respectifs.
+Charger l’outil de développement Qt https://www.qt.io/product/development-tools si vous ne l’avez pas (*il existe en version open source*),
  
+2.  Dans Qt, choisir: Fichier/Nouveau projet..., créer le projets : IAdePapi  et  y ajouter les fichiers xxx.cpp et xxx.h correspondants au repository.
+(Choisissez: Application Qt avec Widgets, dans "class parent" sélectionner QWidget, ne pas générer de formulaire, langue: aucun, appuyer sur TERMINER) 
 
-2.  Dans Qt, Fichier/Nouveau projet..., créer deux projets : IAdePapi_installation  et IAdePapi_1 et  y ajouter les fichiers .cpp et .h correspondants à chaque repository.
-(Choisissez: Application Qt avec Widgets, dans "class parent" sélectionner QWidget, ne pas générer de formulaire, langue: aucun, appuyer sur TERMINER.) 
+*Pour ajouter les fichiers du projets, il est plus simple de faire un clic droit sur "Header files" / "Ajouter des fichiers existants" puis sélectionner tous les fichiers xxx.h et xxx.cpp.*
 
-Pour ajouter les fichiers de nos projets, il est plus simple de faire un clic droit sur "Header files" / "Ajouter des fichiers existants" puis sélectionner tous les fichiers xxx.h et xxx.cpp de nos projets qui viendront s'ajouter à nos projets.
-Supprimer les fichier maim.cpp, Widget.cpp et Widget.h créés automatiquement àla création du projet et qui seront remplacé par les fichiers du même nom du projet.
+Supprimer les fichier **maim.cpp**, **Widget.cpp** et **Widget.h** créés automatiquement àla création du projet et qui seront remplacés par les fichiers du même nom.
 
-3.  Dans le menu vertical de gauche, cliquer sur Projets/Compiler/Paramètre de compilation ajouter si nécessaire «Release» en plus de «Debug» (afin de diminuer les temps d’apprentissage).  
+3.  Dans le menu vertical de gauche, cliquer sur Projets/Compiler/Paramètre de compilation et ajouter si nécessaire **Release** en plus de **Debug** (*afin de diminuer les temps d’apprentissage*). Puis dans le symbole de l'écran sélectioner **Release**, enfin appuyer sur le **marteau** pour compiler.
+   
+4.  **Créer le projet IAdepapi_installation de la même façon.**
 
-4.	 Maintenant que les deux projets sont créés, ajouter un dossier, par exemple: "dataSets" et y mettre les deux fichiers MNIST (60’000 images et 60’000 labels); Pour ceci:
-aller sur GitHub – fgnt/mnist, charger et extraire les fichiers d'entrainement MNIST:
+5.	 Maintenant que les deux projets sont créés, ajouter un dossier local, *par exemple: **dataSets*** et y mettre les deux fichiers **MNIST** (60’000 images et 60’000 labels); que vous pouvez trouver sur GitHub sous **fgnt/mnist**. Charger et extraire les fichiers d'entrainement :
 
 	    https://raw.githubusercontent.com/fgnt/mnist/master/train-images-idx3-ubyte.gz
   	 
 	    https://raw.githubusercontent.com/fgnt/mnist/master/train-labels-idx1-ubyte.gz
 
 
-6.	 Dans Qt, exécuter le projet "IadePapi_installation", qui vous demandera le nom du dossier soit "dataSets" afin de créer des sous dossiers (./dataSets/data_XOR, ./IAdePapi_1_data/data_MNIST/.. etc, et en y créant les fichiers d’apprentissage (par ex. XOR.txt, MNISTxxxx.txt).
-(Ces sous-dossiers comprendront aussi les fichiers résultats d'apprentissage).
-IadePapi_installation ne s'exécute qu'une fois!
+6.	 Dans Qt, **exécuter le projet "IadePapi_installation**, qui vous demandera le nom du dossier soit **dataSets** afin de créer des sous dossiers (./dataSets/data_XOR, ./IAdePapi_1_data/data_MNIST/.. etc), et y créera les fichiers d’apprentissage (par ex. XOR.txt, MNISTxxxx.txt, etc).
+(Après les apprentissages, ces sous-dossiers comprendront aussi les fichiers résultats d'apprentissage).
 
-7.	 Enfin dans Qt, exécuter le projet IAdePapi_1 :
+**IadePapi_installation ne s'exécute qu'une fois!**
+
+7.	 Enfin dans Qt, **exécuter le projet IAdePapi_1** :
 Une fenêtre s'ouvre, vous demandant de choisir un fichier, soit p.ex. : /dataSets/data_BcdToOutput/BcdToOutput.txt.
-Le programme demande si l’on veut recréer le fichier. Cela permet de changer le nombre d’exemples d’apprentissage.(p.exemple 800).
-Le nombre d’entrées ici 4 (la couche Q0 aura 4 neurones = C0 à C3) et le nombre de sorties ici 10 sont indiqués dans la fenêtre principale.
+Le programme demande si l’on veut recréer le fichier. Cela permet de changer le nombre d’exemples d’apprentissage.(p.exemple 1000). La fenêtre principale indique alors le nombre d’entrées ici 4 (*la couche Q0 aura 4 neurones = C0 à C3) et le nombre de sorties ici 10*.
 	
-8.	 Cliquer sur «nouveau réseau».
+8.	 **Cliquer sur nouveau réseau**.
 
-9.	 Si l’on désir ajouter des couches intermédiaires (cachées), on pourra choisir un nombre entre -3 et +3. Les valeurs négatives permettent de créer le réseau Hyperconnecté (voir plus haut),
-ajoutons le nombre de neurones par couches intermédiaires. Choisissons p.ex : -1 couche de 3 neurones
+9.	 Si l’on désir ajouter des couches intermédiaires (cachées), on pourra choisir un nombre entre **-3 et +3**. Les valeurs négatives permettent de créer le réseau **Hyperconnecté** (voir plus haut),
+ajoutons le nombre de neurones par couche(s) intermédiaire(s). Choisissons p.ex : -1 couche de 3 neurones.
 
-On peut choisir ici les poids initiaux des branches, mais laisser plutôt «rd» afin de d’y attribuer des valeurs aléatoires.
+On peut choisir ici les poids initiaux des branches, mais laisser plutôt **rd** afin de d’y attribuer des valeurs aléatoires.
 
-9.	 Cliquer sur «1:Construisons la tables» : la table apparaît.
+9.	 Cliquer sur **1:Construisons la tables** : la table apparaît.
 
-10.  cliquer sur «2:Construisons le réseau» : le réseau apparaît sous forme de graphe. Avec les neurones et leur biais. (!!Délai d’attente).
+10.  cliquer sur **2:Construisons le réseau** : le réseau apparaît sous forme de graphe. Avec les neurones et leur biais. (!!Délai d’attente).
 
-11.  Laissons p.ex. le «taux d’apprentissage» de 0.5, la «différence acceptable» sur 0.2. C’est.à dire que la différence entre les valeurs cibles (0 ou 1) et les sorties de la dernière couche ne doit pas dépasser 0.2.
+11.  Laissons p.ex. le **taux d’apprentissage** de 0.5, la **différence acceptable** sur 0.2. C’est.à dire que la différence entre les valeurs cibles (0 ou 1) et les sorties de la dernière couche ne doit pas dépasser 0.2.
 
-12.  Choisissons un nombre de boucle (epoch)  = 10.	
+12.  Choisissons un **nombre de boucle (epoch)**  p.ex. 10.	
 
-  (Cliquons par exemple sur «Afficher les détails» puis sur «Pas à pas» plusieurs fois : on peut voir le changement des poids sur les liaisons entre neurones.)
+Si l'on choisit **Afficher les détails**, un appui sur **Pas à pas** plusieurs fois permet de voir le changement des poids **W** sur les liaisons entre neurones ainsi que d'autres valeurs calculées.
 
-13.  Cliquons sur «3:Apprentissage», une fenêtre s’ouvre montrant qu’après 10 boucles nous avons 100% de réussite. Une fenêtre de résultats apparaît avec les % de réussite, les paramètres choisis et les comparaisons entre valeurs cibles et valeurs calculées.
+13.  Cliquons sur **3:Apprentissage**. 
 
-Ces résultats apparaissent aussi dans un fichier se trouvant dans le sous-dossier /dataSets/data_BcdToOutput/BcdToOutput_tauxMax_de_réussite_100%.txt, affichant les paramètres ainsi que les résultats des 500 derniers exemples de la dernière boucle. Si 100% de réussite, l’apprentissage s’arrête.
-Le nombre d’exemples à afficher peut être modifier dans le fichier reseauDeNeurones_variablesConstantes.h -> nberOfResultOutput(500).
+Après un temps d'attente, une fenêtre de résultats apparaît avec les % de réussite, les paramètres choisis et les comparaisons entre valeurs cibles et valeurs calculées.
 
-Pour augmenter le taux de réussite, on peut appuyer plusieurs fois sur «Apprentissage» ce qui refera à chaque fois
-10 boucles supplémentaires. 
+Ces résultats figureront aussi dans un fichier se trouvant dans le sous-dossier /dataSets/data_BcdToOutput/BcdToOutput_tauxMax_de_réussite_100%.txt. Si 100% de réussite, l’apprentissage s’arrête.
+(*Le **nombre d’exemples à afficher** peut être modifier dans le fichier reseauDeNeurones_variablesConstantes.h -> nberOfResultOutput(500)*.
 
-En cochant "Afficher les détails", les poids "W" des liaisons changeront à chaque appui sur "Pas à pas".( On peut voir qu’en cas de 100 % de réussite et en cochant "Afficher les détails", des Pas à pas supplémentaires ne feront pas évoluer les poids des liaisons, contrairement au début de l'apprentissage.). Après des Pas à pas, on peut appuyer sur "Apprentissage".
+**Pour augmenter le taux de réussite**, on peut appuyer plusieurs fois sur **Apprentissage** ce qui refera à chaque fois n boucles supplémentaires. 
 
-Il est possible de modifier les couches cachées et de repartir de «1: construisons la tables» etc.
+En cochant **Afficher les détails**, les poids **W** des liaisons changeront à chaque appui sur **Pas à pas**.( *On peut voir qu’en cas de 100 % de réussite et en cochant "Afficher les détails", des Pas à pas supplémentaires ne feront pas évoluer les poids des liaisons, contrairement aux **Pas à pas** effectués  avant l'apprentissage*). Après des appuis sur **Pas à pas**, on peut appuyer sur **Apprentissage**.
+
+**Il est possible de modifier les couches cachées et de repartir de «1: construisons la tables» ...**.
 
 <strong> Si MNIST :</strong>
 
