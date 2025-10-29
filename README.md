@@ -1,12 +1,12 @@
 
-
-﻿(en construction)
+(en construction)
 
 Ce projet qui, à l'aide de couches de neurones artificiels (perceptron multicouches),
 permet par exemple de résoudre la fonction XOR en fonction de x et y. - ou de simuler un décodeur binaire/décimal (0..9).
-(Le contraire également, ou à partir d'une entrée entre 0 et 9, on obtient le chiffre binaire correspondant (4 bits). Le taux de réussite atteint 100%.
+(Le contraire également, ou à partir d'une entrée entre 0 et 9, on obtient le chiffre binaire correspondant (4 bits). Le taux de réussite atteint 100%).
 
 En poussant plus loin, le réseau de neurones «full connected» a été précédé de couches de convolution permettant l'apprentissage à l'aide d'une grande quantité d'images monocolor (jusqu’à 60’000) représentant des chiffres 0 à 9 écrits à la main (data set MNIST), de dire en sortie de quel chiffre il s'agit, ceci avec un taux de réussite de 95% environ.
+
 Actuellement, les spécialistes obtiennent de meilleures résultats en complexifiant l’architecture des réseaux.
 Les techniques de convolutions et des réseaux de neurones sont décrites abondamment sur internet(voir réf. ci-après).
 Le fichier des labels de MNIST m'a servi à construire les fichiers d'entraînement pour XOR, binair/décimal etc.
@@ -15,10 +15,10 @@ A part les liaisons entre couches (fully connected), j'ai ajouté aussi des liai
 
 Le programme permet aussi, à partir d’un ancien apprentissage qui auront fait évoluer le poids des liaisons entre neurones, de continuer l’entraînement, ceci à partir de fichiers préenregistrés ayant le suffixe _net.txt(si < 100 % de réussite) ou _netok.txt (si 100 % de réussite). 
 
-						                   	_________________________________________
+						            _________________________________________
 								
 
-<strong>Procédure :</strong>
+##  Procédure:
 
 1.  créer deux dossiers **IAdePapi_1** et **IAdePapi_installation** et copier les fichier xxx.cpp et xx.h depuis les repository respectifs.
 Charger l’outil de développement Qt https://www.qt.io/product/development-tools si vous ne l’avez pas (*il existe en version open source*),
@@ -48,7 +48,7 @@ Supprimer les fichier **maim.cpp**, **Widget.cpp** et **Widget.h** créés autom
 
 7.	 Enfin dans Qt, **exécuter le projet IAdePapi_1** :
 Une fenêtre s'ouvre, vous demandant de choisir un fichier, soit p.ex. : /dataSets/data_BcdToOutput/BcdToOutput.txt.
-Le programme demande si l’on veut recréer le fichier. Cela permet de changer le nombre d’exemples d’apprentissage.(p.exemple 1000). La fenêtre principale indique alors le nombre d’entrées ici 4 (*la couche Q0 aura 4 neurones = C0 à C3) et le nombre de sorties ici 10*.
+Le programme demande si l’on veut recréer le fichier. Cela permet de changer le nombre d’exemples d’apprentissage.(p.exemple 1000). La fenêtre principale indique alors le nombre d’entrées ici 4 (*la couche Q0 aura 4 neurones = C0 à C3*) et le nombre de sorties ici 10.
 	
 8.	 **Cliquer sur nouveau réseau**.
 
@@ -72,41 +72,42 @@ Si l'on choisit **Afficher les détails**, un appui sur **Pas à pas** plusieurs
 Après un temps d'attente, une fenêtre de résultats apparaît avec les % de réussite, les paramètres choisis et les comparaisons entre valeurs cibles et valeurs calculées.
 
 Ces résultats figureront aussi dans un fichier se trouvant dans le sous-dossier /dataSets/data_BcdToOutput/BcdToOutput_tauxMax_de_réussite_100%.txt. Si 100% de réussite, l’apprentissage s’arrête.
-(*Le **nombre d’exemples à afficher** peut être modifier dans le fichier reseauDeNeurones_variablesConstantes.h -> nberOfResultOutput(500)*.
+(*Le **nombre d’exemples à afficher** peut être modifier dans le fichier reseauDeNeurones_variablesConstantes.h -> nberOfResultOutput(500)*).
 
 **Pour augmenter le taux de réussite**, on peut appuyer plusieurs fois sur **Apprentissage** ce qui refera à chaque fois n boucles supplémentaires. 
 
-En cochant **Afficher les détails**, les poids **W** des liaisons changeront à chaque appui sur **Pas à pas**.( *On peut voir qu’en cas de 100 % de réussite et en cochant "Afficher les détails", des Pas à pas supplémentaires ne feront pas évoluer les poids des liaisons, contrairement aux **Pas à pas** effectués  avant l'apprentissage*). Après des appuis sur **Pas à pas**, on peut appuyer sur **Apprentissage**.
+En cochant **Afficher les détails**, les poids **W** des liaisons changeront à chaque appui sur **Pas à pas**.(*On peut voir qu’en cas de 100 % de réussite et en cochant "Afficher les détails", des Pas à pas supplémentaires ne feront pas évoluer les poids des liaisons, contrairement aux **Pas à pas** effectués  avant l'apprentissage*). Après des appuis sur **Pas à pas**, on peut appuyer sur **Apprentissage**.
 
-**Il est possible de modifier les couches cachées et de repartir de «1: construisons la tables» ...**.
+**Il est possible de modifier les couches cachées et de repartir de 1: construisons la tables ...**.
 
-<strong> Si MNIST :</strong>
+ ### Si MNIST: 
 
-Si l'on choisi par exemple le fichier ./dataSets/data_MNIST/MNIST_4x3x3.txt, une fenêtre apparaît avec les paramètres suivant:
+Si l'on choisi par exemple le fichier ./dataSets/data_MNIST/xxx.txt, qui a été créé à l'exécution de IAdepapi_installation, une fenêtre apparaît avec les paramètres suivant:
 
-Nombre d’image max 59999 	    Nombre de pixel 28 (inchangé)	Nombre de convolutions 0..3
-si le "Nombre de convolutions = 0", les pixels de l’image (28x28) seront transmises à l’entrée du réseau «full connected».
+**Nombre d’images** (max 60000) 	**Nombre de pixel** (28 inchangé)	**Nombre de convolutions** (0..3)
+(*si le "Nombre de convolutions = 0, les pixels de l’image (28x28) seront dépliées à l’entrée du réseau full connected*).
 
-Padding (same) si coché, un nombre « zéro padding » sera ajouté pour que la sortie(feature) ait la même taille que l’image d’entée. 
+**Padding (same)** si coché, un nombre « zéro padding » seront ajoutés pour que la sortie(feature) ait la même taille que l’image d’entée. 
 
-Stride(pas) =1 en général pour la convolution.
+**Stride(pas)** = 1 en général pour la convolution.
 
-Nombre de filtres.(A part quelques premiers filtres connus, les suivants seront déterminés aléatoirement. 
+**Nombre de filtres** (A part quelques premiers filtres connus, les suivants sont déterminés aléatoirement). 
 
-Type de filtre 3x3 ou 5x5.
+**Type de filtre** 3x3 ou 5x5.
 
-Max pool qui consiste, après convolution, à ne prendre que les valeurs maximum dans un carré de 2x2 si « Stride pooling = 2. 
+**Max pool** qui consiste, après convolution, à ne prendre que les valeurs maximum dans un carré de 2x2 si  **Stride pooling** = 2. 
 
-RELU à cocher en général pour ne prendre que les valeurs positives de sortie.
+**RELU** à cocher en général pour ne prendre que les valeurs positives de sortie.
 
-Pooling pair à cocher en général sauf pour la dernière convolution afin de rendre « pair » la sortie (feature) qui sera transmise à la convolution suivante.
+**Pooling pair** à cocher en général sauf pour la dernière convolution afin de rendre « pair » la sortie (feature) qui sera transmise à la convolution suivante.
 
-Ces paramètres serons à remplir pour le nombre de convolutions choisi.
+**Ces paramètres serons à remplir pour le nombre de convolutions choisi.**
 
-Ensuite, si changement, on fera un "SAVE". Le nom du fichier pourrait être p. ex. MNIST_4x3_8x3.txt.
+Ensuite, si changement, on fera un **SAVE**. Le nom du fichier pourrait être p. ex. MNIST_4x3_8x3.txt.
+**Il est important que le nom du fichier comporte MMIST** (pas sensible à la case)
 Tous ces termes utilisés pour les convolutions sont bien expliqués dans les références ci-après.
 
-Continuation au point 7 ci-dessus
+**Continuation au point 7 ci-dessus**
 
 
 
