@@ -128,7 +128,7 @@ param::param(QString path, QString fileName, bool &ok){   //,  struct m_convPara
             sp_nberOfConvolutions = new QSpinBox;
             sp_nberOfConvolutions->setFixedWidth(50);
             sp_nberOfConvolutions->setValue(m_nberOfConvolutions);
-            sp_nberOfConvolutions->setMinimum(1);
+            sp_nberOfConvolutions->setMinimum(0);
             sp_nberOfConvolutions->setMaximum(3);
             hboxNberOfConv->addWidget(l_nberOfImages);
             hboxNberOfConv->addWidget(editNberOfImages);
