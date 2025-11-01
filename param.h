@@ -26,7 +26,7 @@ class param  : public QDialog{
 
 public:
     param(QString path, QString fileName, bool &ok);  //  ,  struct m_convParametre convParam[]);
-  //  void accepted();
+  QString getNewFileName() const; // ****1/11/25
 
     ~param();
 
