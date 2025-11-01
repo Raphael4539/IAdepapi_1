@@ -355,6 +355,9 @@ void reseauDeNeurones::lectureExemples(){
         m_param = new param(m_path,m_fileExempleName, ok);
         m_param->exec();
         if(!ok) return;  // 22/6/25
+		m_fileExempleName = m_param->getNewFileName(); // ****1/11/25
+        exemplesFile->setText(m_fileExempleName); // ****1/11/25
+
         if( !lectureFichierConvParam(this, m_fileExempleName)){
             QMessageBox::warning(this, "Erreur fchier des paramètres",
                 "des paramètres ne correspondent pas");
@@ -1670,3 +1673,4 @@ void reseauDeNeurones::testLeReseau(){ // **** abandonné pour l'instant
 */
 
 reseauDeNeurones::~reseauDeNeurones(){}
+
