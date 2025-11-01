@@ -460,3 +460,6 @@ void param::reject(){
 */
 param::~param(){};
 
+QString param::getNewFileName() const {return  m_fichier; } // ****1/11/25
+
+
