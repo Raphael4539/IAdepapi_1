@@ -389,10 +389,10 @@ void param::accept(){
 
  //   m_fileName = m_fileName.mid(m_path.size(), m_fileName.size() - m_path.size()-4)+".txt" +
  //                QDate::currentDate().toString("yy-MMM-dd") +"_" + QTime::currentTime().toString("hh mm ss") +".txt"; // + QTime::currentTime().toString()
-    QString fichier = QFileDialog::getSaveFileName(this, "Enregistrer le fichier",
-        m_fileName, ("*.txt"));
+    QString m_fichier = QFileDialog::getSaveFileName(this, "Enregistrer le fichier",
+        m_fileName, ("*.txt"));  // ****1/11/25
  qDebug() <<  editNberOfImages->text().toULong(&ok,10);
-    QFile f(fichier);              //f(m_fileName);
+    QFile f(m_fichier);              // ****1/11/25
     if(f.open(QIODevice::WriteOnly)){
         QTextStream fluxMNIST(&f);           //(&m_fileName);
 
