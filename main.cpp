@@ -24,7 +24,8 @@ int main(int argc, char *argv[]){
     w = new QWidget;
     w->resize(2500,900);
     reseauDeNeurones fenetre(w);
-       w->show();
+    fenetre.show();
     return app.exec();
 }
+
 
