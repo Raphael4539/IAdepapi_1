@@ -26,7 +26,7 @@ class param  : public QDialog{
 
 public:
     param(QString path, QString fileName, bool &ok);  //  ,  struct m_convParametre convParam[]);
-  QString getNewFileName() const; // ****1/11/25
+    QString getNewFileName() const; // ****1/11/25
 
     ~param();
 
@@ -127,5 +127,6 @@ private:
     int m_nberOfConvolutions;
     QString m_fileName;
     QString m_path;
+    QString m_fichier;  // ****1/11/25
 };
 #endif // PARAM_H
