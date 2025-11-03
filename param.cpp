@@ -7,7 +7,7 @@ param::param(QString path, QString fileName, bool &ok){   //,  struct m_convPara
 
  //   convParametre m_convParam[3];
 //    bool ok = true;
-    m_fileName = fileName; m_fichier = m_fieName; // *** 3/11/25
+    m_fileName = fileName; m_fichier = m_fileName; // *** 3/11/25
     m_path = path;
 
     QFile fichierMNIST(fileName);
