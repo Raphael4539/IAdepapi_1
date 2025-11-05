@@ -8,7 +8,7 @@
 
 using namespace std;
 
-#define test
+#define notest
 #define methode2
 
 /*
@@ -194,13 +194,11 @@ void convolutionDyn::convDyn(quint32 imageNber, quint16 BoucleNber){
     }
 
 
-#ifdef test \
+#ifdef test 
     // test de la convolution sur la première image qui représente un 5 \
     // voir  RESEAUDENEURONES_VARIABLESCONSTANTES_H
-    if (m_testConv->open(QIODevice::Append)){
-        //       if (imageNber < nberOfImagesForTest and BoucleNber == 1){
-        if ((imageNber == 0 or imageNber == 220 or imageNber == 221) and
-			BoucleNber == 1){
+    if ((imageNber == 0 or imageNber == 220 or imageNber == 221) and BoucleNber == 1){
+		if (m_testConv->open(QIODevice::Append)){
             QTextStream convTest(m_testConv) ;
             convTest.setRealNumberPrecision(5);
             convTest << QDate::currentDate().toString() << "\n";
@@ -283,10 +281,11 @@ void convolutionDyn::convDyn(quint32 imageNber, quint16 BoucleNber){
                 }
             }
         }
-    }
-    m_testConv->close();
+		  m_testConv->close();
+	}
+  
 #endif
-        // != nullptr
+
 }
 
 int convolutionDyn::getFeatureDim()const{
@@ -307,3 +306,4 @@ int convolutionDyn::getNberOfFilters() const {return m_nberOfFilters;}
 
 
 convolutionDyn::~convolutionDyn(){};
+
