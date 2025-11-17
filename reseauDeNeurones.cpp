@@ -41,7 +41,6 @@ finRépéter
 
 reseauDeNeurones::reseauDeNeurones(QWidget *parent ): QWidget( parent)
 {
-    parent->resize(1500,600);
     parent->show();
     m_nberOfImages = 0; //22.4
     m_MNISTFlag = false;
@@ -145,8 +144,8 @@ reseauDeNeurones::reseauDeNeurones(QWidget *parent ): QWidget( parent)
     HBexemplesFile->addWidget(exemplesFile);
  //   grpMethode->setLayout(HBexemplesFile);
 
-    aPartirDunFichier = new QRadioButton("A partir d'un fichier \n"
-        "(fichier d'entrée_netok.txt ou fichier d'entrée_net.txt)" );// ******4/25
+    aPartirDunFichier = new QRadioButton("A partir d'un fichier");
+    aPartirDunFichier->setToolTip("Le fichier se termine par _netok.txt ou _net.txt");// 16/11/25
     nouveauReseauButton = new QRadioButton("Nouveau réseau\n");
 
     QVBoxLayout *methodeConstruction  = new  QVBoxLayout;
@@ -161,7 +160,6 @@ reseauDeNeurones::reseauDeNeurones(QWidget *parent ): QWidget( parent)
 
     nbEntrees = new  QLineEdit();
     nbEntrees->setReadOnly(true);
-    //   nbEntrees->setRange(1,nberOfFilters_2 * 6 * 6);
     nbSorties = new  QLineEdit;
     nbSorties->setReadOnly(true);
     nbCoucheCachees = new  QSpinBox();
@@ -181,8 +179,8 @@ reseauDeNeurones::reseauDeNeurones(QWidget *parent ): QWidget( parent)
     poidsInitiaux           = new QLineEdit;
     poidsInitiaux->setText("rd");           // *****14/4/25
     poidsInitiaux->setModified(false);
-    constructionTableButton = new QPushButton("1: Construisons la table (full connected)\n"
-        "(déterminer d'abord les couches cachées si nécessaire)");
+    constructionTableButton = new QPushButton("1: Construisons la table");
+    constructionTableButton->setToolTip("déterminer d'abord les couches cachées si nécessaire");// 16/11/25
     constructionReseauButton = new  QPushButton("2: Construisons le réseau");
     constructionReseauButton->setFocus();
 
@@ -1416,9 +1414,9 @@ void reseauDeNeurones::conclusion() {
         resultats += " % de réussites par boucle (époque):  \n";
         for (quint16 b = 1;b <= nBoucle; b++){
             fluxResult << " boucle "  << b <<": " <<
-                tauxDeReussiteParBoucle[b]*100 << "\n";
+                tauxDeReussiteParBoucle[b]*100 << "%\n";
             resultats +=  " boucle " + QString::number(b) +
-                ": " + QString::number(tauxDeReussiteParBoucle[b] * 100) + "\n";
+                ": " + QString::number(tauxDeReussiteParBoucle[b] * 100) + "%\n";
         }
         fluxResult << " nombre de boucles total: " << nBouclesTotal << '\n';
         resultats += " nombre de boucles total: " +  QString::number(nBouclesTotal) + "\n";
@@ -1673,5 +1671,6 @@ void reseauDeNeurones::testLeReseau(){ // **** abandonné pour l'instant
 */
 
 reseauDeNeurones::~reseauDeNeurones(){}
+
 
 
