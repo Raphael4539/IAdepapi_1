@@ -1,18 +1,16 @@
-
-(en construction)
+## Introduction
 
 Ce projet qui, à l'aide de couches de neurones artificiels (perceptron multicouches),
 permet par exemple de résoudre la fonction XOR en fonction de x et y. - ou de simuler un décodeur binaire/décimal (0..9).
 (Le contraire également, ou à partir d'une entrée entre 0 et 9, on obtient le chiffre binaire correspondant (4 bits). Le taux de réussite atteint 100%).
 
-En poussant plus loin, le réseau de neurones «full connected» a été précédé de couches de convolution permettant l'apprentissage à l'aide d'une grande quantité d'images monocolor (jusqu’à 60’000) représentant des chiffres 0 à 9 écrits à la main (data set MNIST), de dire en sortie de quel chiffre il s'agit, ceci avec un taux de réussite de 95% environ.
+En poussant plus loin, le réseau de neurones «full connected» a été précédé de couches de convolution permettant l'apprentissage à l'aide d'une grande quantité d'images monocolor (jusqu’à 60’000) représentant des chiffres 0 à 9 écrits à la main (data set MNIST), de dire en sortie de quel chiffre il s'agit, ceci avec un taux de réussite de 95% environ (et même 99.5% !). Voir les exemples donnés dans **IAdePapi_installation**
 
-Actuellement, les spécialistes obtiennent de meilleures résultats en complexifiant l’architecture des réseaux.
 Les techniques de convolutions et des réseaux de neurones sont décrites abondamment sur internet(voir réf. ci-après).
 Le fichier des labels de MNIST m'a servi à construire les fichiers d'entraînement pour XOR, binair/décimal etc.
 
 A part les liaisons entre couches (fully connected), j'ai ajouté aussi des liaison sautant (à pieds joints) sur les couches que j'appelle ironiquement "hyperconnected".
-
+ 
 Le programme permet aussi, à partir d’un ancien apprentissage qui auront fait évoluer le poids des liaisons entre neurones, de continuer l’entraînement, ceci à partir de fichiers préenregistrés ayant le suffixe _net.txt(si < 100 % de réussite) ou _netok.txt (si 100 % de réussite). 
 
 						            _________________________________________
